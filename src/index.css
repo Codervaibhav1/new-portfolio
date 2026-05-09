@@ -11,186 +11,127 @@
   line-height: 1.7;
   overflow: hidden;
 }
-nav {
+/* NAVBAR */
+.navbar {
+  width: 100%;
+  padding: 18px 8%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 28px;
-  background: rgba(8, 12, 21, 0.95);
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.07);
+  background: #080c15;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
+
 .logo {
-  font-size: 17px;
-  font-weight: 600;
-  color: #fff;
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
 }
+
 .logo span {
-  color: #7c6fdd;
+  color: #4f8cff;
 }
+
 .nlinks {
   display: flex;
-  gap: 20px;
+  align-items: center;
+  gap: 28px;
 }
+
 .nlinks a {
-  font-size: 15px;
-  color: #8b90a8;
+  color: #e6e8f0;
   text-decoration: none;
+  transition: 0.3s;
 }
+
+.nlinks a:hover {
+  color: #4f8cff;
+}
+
 .ncta {
-  font-size: 12px;
-  background: #7c6fdd;
-  color: #fff;
-  padding: 7px 16px;
-  border-radius: 8px;
+  padding: 10px 20px;
   border: none;
+  border-radius: 8px;
+  background: #4f8cff;
+  color: white;
   cursor: pointer;
+  font-weight: 600;
 }
-.nb-root {
-          position: sticky;
-          top: 0;
-          z-index: 100;
-          background: rgba(8, 12, 21, 0.95);
-          border-bottom: 0.5px solid rgba(255, 255, 255, 0.07);
-          transition: padding 0.3s ease, box-shadow 0.3s ease;
-        }
-        .nb-root.scrolled {
-          box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-        }
 
-        .nb-inner {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 16px 28px;
-          gap: 12px;
-          transition: padding 0.3s ease;
-        }
-        .nb-root.scrolled .nb-inner {
-          padding: 12px 28px;
-        }
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
 
-        /* Logo */
-        .nb-logo {
-          font-size: 17px;
-          font-weight: 600;
-          color: #fff;
-          text-decoration: none;
-          flex-shrink: 0;
-        }
-        .nb-logo span { color: #7c6fdd; }
+.hamburger span {
+  width: 26px;
+  height: 3px;
+  background: white;
+  border-radius: 5px;
+  transition: 0.3s;
+}
 
-        /* Desktop links */
-        .nb-links {
-          display: flex;
-          gap: 4px;
-        }
-        .nb-links a {
-          font-size: 13px;
-          color: #8b90a8;
-          text-decoration: none;
-          padding: 7px 12px;
-          border-radius: 8px;
-          position: relative;
-          overflow: hidden;
-          transition: color 0.2s;
-        }
-        .nb-links a:hover { color: #fff; }
-        .nb-links a::before {
-          content: "";
-          position: absolute;
-          top: 50%; left: 50%;
-          width: 0; height: 0;
-          background: rgba(255, 255, 255, 0.07);
-          border-radius: 100%;
-          transform: translate(-50%, -50%);
-          pointer-events: none;
-          opacity: 0;
-        }
-        .nb-links a:hover::before {
-          animation: nbRipple 0.55s ease-out forwards;
-          opacity: 1;
-        }
-        @keyframes nbRipple {
-          0%   { width: 0;     height: 0;     opacity: 1; }
-          100% { width: 180px; height: 180px; opacity: 0; }
-        }
+/* Animation */
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translateY(11px);
+}
 
-        /* CTA button */
-        .nb-cta {
-          font-size: 12px;
-          background: #7c6fdd;
-          color: #fff;
-          padding: 7px 16px;
-          border-radius: 8px;
-          border: none;
-          cursor: pointer;
-          white-space: nowrap;
-          flex-shrink: 0;
-          transition: background 0.2s, transform 0.15s;
-        }
-        .nb-cta:hover  { background: #6a5ec7; }
-        .nb-cta:active { transform: scale(0.96); }
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
 
-        /* Hamburger */
-        .nb-toggle {
-          display: none;
-          background: none;
-          border: none;
-          cursor: pointer;
-          padding: 4px 6px;
-          border-radius: 6px;
-          color: #8b90a8;
-          transition: color 0.2s, background 0.2s;
-          flex-shrink: 0;
-        }
-        .nb-toggle:hover { color: #fff; background: rgba(255,255,255,0.06); }
-        .nb-toggle svg { display: block; }
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-11px);
+}
 
-        /* Mobile drawer */
-        .nb-drawer {
-          display: none;
-          flex-direction: column;
-          background: rgba(8, 12, 21, 0.98);
-          border-top: 0.5px solid rgba(255, 255, 255, 0.07);
-          padding: 10px 18px 18px;
-          gap: 2px;
-          animation: nbSlide 0.2s ease;
-        }
-        @keyframes nbSlide {
-          from { opacity: 0; transform: translateY(-6px); }
-          to   { opacity: 1; transform: translateY(0);    }
-        }
-        .nb-drawer.open { display: flex; }
-        .nb-drawer a {
-          font-size: 14px;
-          color: #8b90a8;
-          text-decoration: none;
-          padding: 11px 14px;
-          border-radius: 8px;
-          transition: color 0.2s, background 0.2s;
-        }
-        .nb-drawer a:hover { color: #fff; background: rgba(255,255,255,0.04); }
-        .nb-drawer-cta {
-          margin-top: 10px;
-          font-size: 13px;
-          background: #7c6fdd;
-          color: #fff;
-          padding: 10px 16px;
-          border-radius: 8px;
-          border: none;
-          cursor: pointer;
-          text-align: center;
-          font-weight: 500;
-          transition: background 0.2s;
-        }
-        .nb-drawer-cta:hover { background: #6a5ec7; }
+/* Hide mobile button on desktop */
+.mobile-btn {
+  display: none;
+}
 
-        /* Responsive */
-        @media (max-width: 640px) {
-          .nb-links  { display: none; }
-          .nb-cta    { display: none; }
-          .nb-toggle { display: block; }
-        }
+/* MOBILE */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .desktop-btn {
+    display: none;
+  }
+
+  .mobile-btn {
+    display: block;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .nlinks {
+    position: absolute;
+    top: 80px;
+    left: -100%;
+    width: 100%;
+    background: #101826;
+    flex-direction: column;
+    padding: 30px;
+    transition: 0.4s;
+  }
+
+  .nlinks.active {
+    left: 0;
+  }
+
+  .nlinks a {
+    width: 100%;
+    padding: 12px 0;
+    border-bottom: 1px solid #1f2a3d;
+  }
+}
+
 .hero {
   padding: 48px 28px 36px;
   display: flex;
@@ -811,7 +752,7 @@ footer {
     width: 80px;
     height: 80px;
     font-size: 28px;
-    align-self: flex-end;
+    align-self: flex-start;
   }
   .hero-l h1 {
     font-size: 24px;
